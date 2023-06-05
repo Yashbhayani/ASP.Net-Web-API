@@ -42,5 +42,24 @@ namespace API.Controllers
         {
             return Ok("Yash" + id);
         }
+        
+        
+        
+        [HttpPost]
+        [Route("student/names/{id}")]
+        public IHttpActionResult getdata(int id)
+        {
+            var re = Request;
+            var headers = re.Headers;
+            var Data = String.Empty;
+            if (headers.Contains("token"))
+            {
+                string token = headers.GetValues("token").First();
+                Data = token;
+            }
+
+            
+            return Ok(Data);
+        }
     }
 }
